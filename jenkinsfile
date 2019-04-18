@@ -1,16 +1,11 @@
 pipeline {
     agent {
 
-    dockerfile { dir "/jenkins" } 
+    dockerfile { dir "C:\Program Files (x86)\Jenkins\workspace\pipeline-jenkins\jenkins" } 
 
     }
     stages {
-
-	stage('clone') {
-            steps {
-              checkout scm                 
-            }
-        }
+	
         stage('Build') {
             steps {
                sh '''
