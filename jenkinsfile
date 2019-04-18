@@ -1,0 +1,26 @@
+pipeline {
+    agent {
+
+    dockerfile true
+
+    }
+    stages {
+        stage('Build') {
+            steps {
+               sh '''
+               docker build -t sergiovega95/testjenkins2 .
+              '''
+                 
+            }
+        }
+
+	stage('Deploy') {
+            steps {
+               sh '''
+               docker run sergiovega95/testjenkins2 -p 9191:9191
+               '''
+                 
+            }
+        }
+    }
+}
