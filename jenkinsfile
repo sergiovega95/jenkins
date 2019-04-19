@@ -10,7 +10,7 @@ pipeline {
             steps {
                
                   sh '''
-               sudo docker build -t sergiovega95/testjenkins .
+               sudo docker build -t sergiovega95/testjenkins:latest .
               '''
             }
         }
@@ -19,7 +19,7 @@ pipeline {
             steps {
               
                  sh '''
-               sudo docker run sergiovega95/testjenkins -p 9191:9191
+               sudo docker run sergiovega95/testjenkins:latest -p 9191:9191
                '''
             }
         }

@@ -15,7 +15,7 @@ RUN dotnet build "jenkins.csproj" -c Release -o /app
 FROM build AS publish
 RUN dotnet publish "jenkins.csproj" -c Release -o /app
 
-FROM base AS final
+FROM base
 WORKDIR /app
 COPY --from=publish /app .
 ENTRYPOINT ["dotnet", "jenkins.dll"]
