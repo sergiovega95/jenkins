@@ -1,7 +1,7 @@
 pipeline {
     agent {
 
-      dockerfile true 
+      dockerfile { dir '/jenkins' } 
 
     }
     stages {
@@ -10,7 +10,7 @@ pipeline {
             steps {
                
                   sh '''
-               sudo docker build -t sergiovega95/testjenkins2 .
+               sudo docker build -t sergiovega95/testjenkins .
               '''
             }
         }
@@ -19,7 +19,7 @@ pipeline {
             steps {
               
                  sh '''
-               sudo docker run sergiovega95/testjenkins2 -p 9191:9191
+               sudo docker run sergiovega95/testjenkins -p 9191:9191
                '''
             }
         }
