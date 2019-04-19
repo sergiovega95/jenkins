@@ -8,7 +8,7 @@ COPY ["/src/jenkins/jenkins.csproj", "jenkins/"]
 RUN dotnet restore "jenkins/jenkins.csproj"
 COPY . .
 WORKDIR "/src/jenkins"
-RUN dotnet build "jenkins.csproj" -c Release -o /app
+RUN dotnet build "/src/jenkins/jenkins.csproj" -c Release -o /app
 
 FROM build AS publish
 RUN dotnet publish "jenkins.csproj" -c Release -o /app
