@@ -1,9 +1,7 @@
 pipeline {
     agent {
-	
-        sh '''
-        sudo docker pull microsoft/dotnet:2.1-aspnetcore-runtime
-        '''
+
+       
       dockerfile true
 
     }
@@ -11,10 +9,7 @@ pipeline {
 	
         stage('Build') {
             steps {
-               
-		   sh '''
-               sudo docker pull microsoft/dotnet:2.1-aspnetcore-runtime
-              '''
+               		
                   sh '''
                sudo docker build -t sergiovega95/testjenkins:latest .
               '''

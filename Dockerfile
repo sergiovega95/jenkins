@@ -1,6 +1,6 @@
 FROM microsoft/dotnet:2.1-aspnetcore-runtime AS base
 WORKDIR /app
-EXPOSE 80
+EXPOSE 4040
 
 FROM microsoft/dotnet:2.1-sdk AS build
 WORKDIR /JenkinsTest
@@ -15,7 +15,7 @@ RUN dotnet build "jenkins.csproj" -c Release -o /app
 FROM build AS publish
 RUN dotnet publish "jenkins.csproj" -c Release -o /app
 
-FROM microsoft/dotnet:2.1-aspnetcore-runtime AS final
+FROM base AS final
 WORKDIR /app
 COPY --from=publish /app .
 ENTRYPOINT ["dotnet", "jenkins.dll"]
